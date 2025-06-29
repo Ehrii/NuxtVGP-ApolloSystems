@@ -63,8 +63,8 @@
 				<!-- Added footer to the layout to provide additional information and links. -->
 				<v-footer class="text-center d-flex flex-column ga-2 py-4" color="blue-darken-3">
 					<div class="d-flex ga-3">
-						<v-btn v-for="icon in icons" :key="icon" :icon="icon" density="comfortable"
-							variant="text"></v-btn>
+						<v-btn v-for="item in socialLinks" :key="item.icon" :href="item.href" :icon="item.icon"
+							target="_blank" rel="noopener" density="comfortable" variant="text" />
 					</div>
 					<v-divider class="my-2" thickness="2" width="50"></v-divider>
 					<div class=" font-weight-regular opacity-60">
@@ -104,6 +104,18 @@ const icons = [
 	'mdi-github',
 	'mdi-linkedin',
 ];
+
+// Define links for the footer icons
+const links = [
+	'https://github.com/Ehrii',
+	'https://www.linkedin.com/in/jhneriel/',
+]
+
+// Create an array of social links with icons and hrefs
+const socialLinks = icons.map((icon, index) => ({
+	icon,
+	href: links[index],
+}))
 
 // Function to toggle the drawer state
 onMounted(() => {

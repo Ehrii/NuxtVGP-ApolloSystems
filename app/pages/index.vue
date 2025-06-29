@@ -25,6 +25,13 @@ body {
 						<div class="position-relative" style="height: 100%; width: 100%;">
 							<v-img :src="`/images/space${i + 1}.jpg`" height="100%" width="100%" cover
 								style="opacity: 0.5;" />
+							<div class="position-absolute top-0  w-100 h-100"
+								style="background-color: rgba(0, 0, 0, 0.1); z-index: 1;">
+								<v-chip class="ma-4">
+									<v-icon left>mdi-rocket</v-icon>
+									Upcoming Launch - {{ slide.rocket.rocket_name }}
+								</v-chip>
+							</div>
 							<div class="d-flex fill-height justify-center align-center position-absolute top-0 left-0 w-100 h-100"
 								style="z-index: 1;">
 								<div class="text-center text-white">
