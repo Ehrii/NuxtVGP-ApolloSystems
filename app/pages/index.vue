@@ -12,7 +12,7 @@
 		<!-- This section displays a carousel of upcoming SpaceX launches if there are any upcoming launches available. If there are no upcoming launches, it will display a message indicating that there are no upcoming launches. -->
 		<template v-else>
 			<v-col cols="12" md="12" class="pb-0">
-				<v-carousel height="400" class="rounded-lg " show-arrows="hover" cycle hide-delimiter-background>
+				<v-carousel height="500" class="rounded-lg " show-arrows="hover" cycle hide-delimiter-background>
 					<v-carousel-item v-for="(slide, i) in launchesUpcoming" :key="i">
 						<v-sheet :color="colors[i % colors.length]" height="100%">
 							<div class="position-relative" style="height: 100%; width: 100%;">
@@ -134,10 +134,11 @@
 							</template>
 						</v-row>
 					</v-slide-y-transition>
-					<div class="text-center my-6">
+					<div class="d-flex flex-wrap justify-center items-center my-6 overflow-x-auto">
 						<v-pagination v-model="currentPage" :length="pageCount" next-icon="mdi-menu-right"
 							prev-icon="mdi-menu-left" :total-visible="5" />
 					</div>
+
 				</div>
 			</client-only>
 		</v-col>
