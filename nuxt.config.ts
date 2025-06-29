@@ -8,6 +8,7 @@ export default defineNuxtConfig({
 			htmlAttrs: { lang: 'en' },
 			link: [
 				{ rel: 'icon', type: 'image/png', href: '/images/favicon/spacexlogo.png' },
+				{ rel: 'preload', as: 'image', href: '/images/bg.webp', type: 'image/webp' },
 			]
 		}
 	},
@@ -24,9 +25,9 @@ export default defineNuxtConfig({
 	},
 
 	alias: {
-		assets: "/<rootDir></rootDir>"
+		assets: "/<rootDir>/assets"
 	},
-
+	css: ['@/assets/css/fonts.css'],
 	vite: {
 		optimizeDeps: {
 			include: ['graphql-tag', 'pinia-plugin-persistedstate-2', 'localforage'],

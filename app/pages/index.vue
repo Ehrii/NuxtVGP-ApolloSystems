@@ -1,5 +1,5 @@
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap'); */
 
 body {
 	font-family: 'Poppins', sans-serif;
@@ -23,7 +23,7 @@ body {
 				<v-carousel-item v-for="(slide, i) in launchesUpcoming" :key="i">
 					<v-sheet :color="colors[i % colors.length]" height="100%">
 						<div class="position-relative" style="height: 100%; width: 100%;">
-							<v-img :src="`/images/space${i + 1}.jpg`" height="100%" width="100%" cover
+							<v-img :src="`/images/space${i + 1}.webp`" height="100%" width="100%" cover
 								style="opacity: 0.5;" />
 							<div class="position-absolute top-0  w-100 h-100"
 								style="background-color: rgba(0, 0, 0, 0.1); z-index: 1;">

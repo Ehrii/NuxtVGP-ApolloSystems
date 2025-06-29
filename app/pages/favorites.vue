@@ -13,7 +13,7 @@
                 <v-list-item v-for="(item) in favorites.favorites" :key="item.id" :title="`${item.name}`">
                     <template #prepend>
                         <v-avatar size="80" class="elevation-4 me-4">
-                            <img src="public/images/bg.jpg" style="object-fit: cover;" width="100%" height="100%" />
+                            <img src="public/images/bg.webp" style="object-fit: cover;" width="100%" height="100%" />
                         </v-avatar>
                     </template>
                     <template v-slot:subtitle>

@@ -2,7 +2,7 @@
     <!-- Mission card component that displays information about a SpaceX launch mission. -->
     <v-card class="mx-auto transition-all duration-300" max-width="100%" :elevation="isHovering ? 12 : 2"
         v-bind="props">
-        <v-img height="200px" src="/images/bg.jpg" cover></v-img>
+        <v-img height="200px" src="/images/bg.webp" cover></v-img>
         <v-card-title>
             <span class="font-bold">{{ launch.mission_name }}</span>
         </v-card-title>

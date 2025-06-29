@@ -3,7 +3,6 @@
 		<v-layout>
 			<!-- App Bar with Slide Transition -->
 			<v-slide-y-transition>
-
 				<v-app-bar v-if="showAppBar" color="primary" dark app>
 					<v-app-bar-nav-icon @click="drawer = !drawer" />
 					<v-app-bar-title>
