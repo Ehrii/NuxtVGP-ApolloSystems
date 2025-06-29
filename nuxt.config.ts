@@ -14,9 +14,13 @@ export default defineNuxtConfig({
 		},
 	},
 
+	alias: {
+		assets: "/<rootDir></rootDir>"
+	},
+
 	vite: {
 		optimizeDeps: {
-			include: ['graphql-tag'],
+			include: ['graphql-tag', 'pinia-plugin-persistedstate-2', 'localforage'],
 		},
 		plugins: [vuetify()],
 	},
