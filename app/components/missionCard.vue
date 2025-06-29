@@ -12,7 +12,7 @@
                     <v-col cols="12" sm="auto">
                         <v-chip color="blue-darken-4" variant="outlined" class="text-truncate"
                             prepend-icon="mdi-calendar" style="max-width: 100%;">
-                            {{ formatDate(launch.launch_date_utc) }}
+                            {{ formatDate(launch.launch_date_utc) ?? 'Date Unavailable' }}
                         </v-chip>
                     </v-col>
 
@@ -44,8 +44,8 @@
             <div v-show="expandedCardId === launch.id">
                 <v-divider></v-divider>
                 <v-card-text>
-                    <strong>Details:</strong> <span class="font-weight-regular">{{
-                        launch.details }}</span>
+                    <span class="font-weight-bold">Details:</span> <span class="font-weight-regular">{{
+                        launch.details ?? 'Details not Available' }}</span>
                 </v-card-text>
             </div>
         </v-expand-transition>

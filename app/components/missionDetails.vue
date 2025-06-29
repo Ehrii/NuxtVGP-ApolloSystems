@@ -9,23 +9,25 @@
 
         <div class="d-flex flex-wrap flex-sm-row ga-4">
             <v-chip variant="tonal" class="mb-2" color="blue-darken-1">
-                <strong>First Flight:</strong>&nbsp;{{ formatDate(rocketData?.rocket.first_flight) }}
+                <strong>First Flight:</strong>&nbsp;{{ formatDate(rocketData?.rocket.first_flight) ?? 'Date Unavailable'
+                }}
             </v-chip>
 
             <v-chip variant="tonal" class="mb-2" color="blue-darken-2">
-                <strong>Height:</strong>&nbsp;{{ rocketData?.rocket.height.meters }} meters
+                <strong>Height:</strong>&nbsp;{{ rocketData?.rocket.height.meters ?? 'Height Unavailable' }} meters
             </v-chip>
 
             <v-chip variant="tonal" class="mb-2" color="blue-darken-2">
-                <strong>Diameter:</strong>&nbsp;{{ rocketData?.rocket.diameter.meters }} meters
+                <strong>Diameter:</strong>&nbsp;{{ rocketData?.rocket.diameter.meters ?? 'Diameter Unavailable' }}
+                meters
             </v-chip>
 
             <v-chip variant="tonal" class="mb-2" color="blue-darken-2">
-                <strong>Mass:</strong>&nbsp;{{ rocketData?.rocket.mass.kg }} kg
+                <strong>Mass:</strong>&nbsp;{{ rocketData?.rocket.mass.kg ?? 'Mass Unavailable' }} kg
             </v-chip>
 
             <v-chip variant="tonal" class="mb-2" color="blue-darken-2">
-                <strong>Stages:</strong>&nbsp;{{ rocketData?.rocket.stages }}
+                <strong>Stages:</strong>&nbsp;{{ rocketData?.rocket.stages ?? 'Stages Unavailable' }}
             </v-chip>
         </div>
     </div>
