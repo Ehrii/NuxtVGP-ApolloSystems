@@ -122,3 +122,9 @@ onMounted(() => {
 	}, 100)
 })
 </script>
+
+<style>
+body {
+	font-family: 'Poppins', sans-serif;
+}
+</style>
