@@ -1,5 +1,3 @@
-
-
 <template>
 	<section class="p-6 ">
 		<!-- This section displays the SpaceX logo and a loading indicator or error message if the data is still being fetched or if there was an error during the fetch. -->
@@ -13,59 +11,62 @@
 		</v-alert>
 		<!-- This section displays a carousel of upcoming SpaceX launches if there are any upcoming launches available. If there are no upcoming launches, it will display a message indicating that there are no upcoming launches. -->
 		<template v-else>
-			<v-carousel height="400" class="rounded-lg" show-arrows="hover" cycle hide-delimiter-background>
-				<v-carousel-item v-for="(slide, i) in launchesUpcoming" :key="i">
-					<v-sheet :color="colors[i % colors.length]" height="100%">
-						<div class="position-relative" style="height: 100%; width: 100%;">
-							<v-img :src="`/images/space${i + 1}.webp`" height="100%" width="100%" cover
-								style="opacity: 0.5;" />
-							<div class="position-absolute top-0  w-100 h-100"
-								style="background-color: rgba(0, 0, 0, 0.1); z-index: 1;">
-								<v-chip class="ma-4">
-									<v-icon left>mdi-rocket</v-icon>
-									Upcoming Launch - {{ slide.rocket.rocket_name }}
-								</v-chip>
-							</div>
-							<div class="d-flex fill-height justify-center align-center position-absolute top-0 left-0 w-100 h-100"
-								style="z-index: 1;">
-								<div class="text-center text-white">
-									<div class=" mb-4" style="font-size: 3rem; letter-spacing: 5px;">
-										{{ slide.mission_name }}
-									</div>
-									<div class="mb-4" style="font-size:medium;">
-										{{ formatDate(slide.launch_date_local) }}
-									</div>
-									<v-dialog max-width="500">
-										<template v-slot:activator="{ props: activatorProps }">
-											<v-btn target="_blank" color="blue-darken-4" class="text-white"
-												v-bind="activatorProps">
-												<v-icon left>mdi-rocket-launch</v-icon>&nbsp;
-												View Mission Details
-											</v-btn>
-										</template>
-										<template v-slot:default="{ isActive }">
-											<v-card :title="`Mission Details - ${slide.mission_name}`" class="pa-4">
-												<v-card-text>
-													{{ slide.rocket.rocket.description }}
-												</v-card-text>
+			<v-col cols="12" md="12" class="pb-0">
+				<v-carousel height="400" class="rounded-lg " show-arrows="hover" cycle hide-delimiter-background>
+					<v-carousel-item v-for="(slide, i) in launchesUpcoming" :key="i">
+						<v-sheet :color="colors[i % colors.length]" height="100%">
+							<div class="position-relative" style="height: 100%; width: 100%;">
+								<v-img :src="`/images/space${i + 1}.webp`" height="100%" width="100%" cover
+									style="opacity: 0.5;" />
+								<div class="position-absolute top-0  w-100 h-100"
+									style="background-color: rgba(0, 0, 0, 0.1); z-index: 1;">
+									<v-chip class="ma-4">
+										<v-icon left>mdi-rocket</v-icon>
+										Upcoming Launch - {{ slide.rocket.rocket_name }}
+									</v-chip>
+								</div>
+								<div class="d-flex fill-height justify-center align-center position-absolute top-0 left-0 w-100 h-100"
+									style="z-index: 1;">
+									<div class="text-center text-white">
+										<div class=" mb-4" style="font-size: 3rem; letter-spacing: 5px;">
+											{{ slide.mission_name }}
+										</div>
+										<div class="mb-4" style="font-size:medium;">
+											{{ formatDate(slide.launch_date_local) }}
+										</div>
+										<v-dialog max-width="500">
+											<template v-slot:activator="{ props: activatorProps }">
+												<v-btn target="_blank" color="blue-darken-4" class="text-white"
+													v-bind="activatorProps">
+													<v-icon left>mdi-rocket-launch</v-icon>&nbsp;
+													View Mission Details
+												</v-btn>
+											</template>
+											<template v-slot:default="{ isActive }">
+												<v-card :title="`Mission Details - ${slide.mission_name}`" class="pa-4">
+													<v-card-text>
+														{{ slide.rocket.rocket.description }}
+													</v-card-text>
 
-												<v-card-actions>
-													<v-spacer></v-spacer>
-													<v-btn text="Close Dialog" @click="isActive.value = false"></v-btn>
-												</v-card-actions>
-											</v-card>
-										</template>
-									</v-dialog>
+													<v-card-actions>
+														<v-spacer></v-spacer>
+														<v-btn text="Close Dialog"
+															@click="isActive.value = false"></v-btn>
+													</v-card-actions>
+												</v-card>
+											</template>
+										</v-dialog>
+									</div>
 								</div>
 							</div>
-						</div>
-					</v-sheet>
-				</v-carousel-item>
-			</v-carousel>
+						</v-sheet>
+					</v-carousel-item>
+				</v-carousel>
+			</v-col>
 		</template>
 
 		<!-- This section displays the main content of the page, including a search bar, filter options, and a grid of SpaceX missions. It also includes pagination for navigating through the list of missions. -->
-		<v-col cols="12" class="text-center">
+		<v-col cols="12" class="text-center pt-0">
 			<client-only>
 				<v-col cols="12">
 					<v-row align="center" justify="center" class="py-4">
@@ -116,9 +117,9 @@
 							<template v-if="paginatedLaunches.length">
 								<v-col v-for="launch in paginatedLaunches" :key="launch.id" cols="12" md="4"
 									class="mb-4 pa-2 pa-md-10">
-										<MissionCard :launch="launch" :expandedCardId="expandedCardId"
-											:toggleCard="toggleCard"  />
-										<!-- The MissionCard component is used to display individual mission details, including the mission name, launch date, and other relevant information. It also includes a button to view more details about the mission. -->
+									<MissionCard :launch="launch" :expandedCardId="expandedCardId"
+										:toggleCard="toggleCard" />
+									<!-- The MissionCard component is used to display individual mission details, including the mission name, launch date, and other relevant information. It also includes a button to view more details about the mission. -->
 								</v-col>
 							</template>
 							<!-- If there are no paginated launches, a message is displayed indicating that no SpaceX missions were found. -->
