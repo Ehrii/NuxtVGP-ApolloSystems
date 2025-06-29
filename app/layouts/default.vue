@@ -3,6 +3,7 @@
 		<v-layout>
 			<!-- App Bar with Slide Transition -->
 			<v-slide-y-transition>
+
 				<v-app-bar v-if="showAppBar" color="primary" dark app>
 					<v-app-bar-nav-icon @click="drawer = !drawer" />
 					<v-app-bar-title>
@@ -41,51 +42,49 @@
 			</v-navigation-drawer>
 
 			<!-- Main content area to display the main content of the application. -->
-			<template>
-				<v-main class="position-relative overflow-hidden" style="min-height: 100vh;">
-					<v-sheet class="position-absolute " style="
-						inset: 0;
-						z-index: -10;
-						height: 100%;
-						width: 100%;
-						background-color: white;
-						background-image:
-						linear-gradient(to right, rgba(240, 240, 240, 0.3) 2px, transparent 12px),
-						linear-gradient(to bottom, rgba(250, 250, 250, 0.3) 1px, transparent 1px);
-						background-size: 4rem 4rem;
-					"></v-sheet>
+			<v-main class="position-relative overflow-hidden" style="min-height: 100vh;">
+				<v-sheet class="position-absolute" :style="{
+					inset: '0',
+					zIndex: -10,
+					height: '100%',
+					width: '100%',
+					backgroundColor: 'white',
+					backgroundImage: `linear-gradient(to right, rgba(240, 240, 240, 0.3) 2px, transparent 12px),
+                      linear-gradient(to bottom, rgba(250, 250, 250, 0.3) 1px, transparent 1px)`,
+					backgroundSize: '4rem 4rem'
+				}" />
+				<v-container fluid class="pa-4">
+					<slot>
 
-					<v-container fluid class="pa-4">
-						<slot />
-					</v-container>
-				</v-main>
-
-				<!-- Added footer to the layout to provide additional information and links. -->
-				<v-footer class="text-center d-flex flex-column ga-2 py-4" color="blue-darken-3">
-					<div class="d-flex ga-3">
-						<v-btn v-for="item in socialLinks" :key="item.icon" :href="item.href" :icon="item.icon"
-							target="_blank" rel="noopener" density="comfortable" variant="text" />
-					</div>
-					<v-divider class="my-2" thickness="2" width="50"></v-divider>
-					<div class=" font-weight-regular opacity-60">
-						This Front End Developer Exam was coded by <strong>John Eriel C. Labadan</strong> for evaluation
-						in modern front-end development. It focuses on real-world skills using
-						Nuxt as the primary framework, leveraging its features for server-side rendering and routing.
-						The exam includes tasks that require knowledge of ES2020 JavaScript standards, emphasizing clean
-						syntax and efficient logic. This will also demonstrate my ability to build user interfaces
-						using Vuetify and manage application state with Pinia. GraphQL is used to test your
-						understanding of querying structured APIs and handling responses within a Vue 3 Composition API
-						setup. TypeScript proficiency is assessed through typed components, interfaces, and type-safe
-						logic throughout the project. This exam is designed to be both challenging and practical,
-						reflecting real tasks faced by modern front-end developers.
-					</div>
-					<v-divider></v-divider>
-					<div>
-						{{ new Date().getFullYear() }} — <strong>ApolloSystems</strong>
-					</div>
-				</v-footer>
-			</template>
+					</slot>
+				</v-container>
+			</v-main>
 		</v-layout>
+		<client-only>
+			<v-footer class="text-center d-flex flex-column ga-2 py-4" color="blue-darken-3">
+				<div class="d-flex ga-3">
+					<v-btn v-for="item in socialLinks" :key="item.icon" :href="item.href" :icon="item.icon"
+						target="_blank" rel="noopener" density="comfortable" variant="text" />
+				</div>
+				<v-divider class="my-2" thickness="2" width="50"></v-divider>
+				<div class=" font-weight-regular opacity-60">
+					This Front End Developer Exam was coded by <strong>John Eriel C. Labadan</strong> for evaluation
+					in modern front-end development. It focuses on real-world skills using
+					Nuxt as the primary framework, leveraging its features for server-side rendering and routing.
+					The exam includes tasks that require knowledge of ES2020 JavaScript standards, emphasizing clean
+					syntax and efficient logic. This will also demonstrate my ability to build user interfaces
+					using Vuetify and manage application state with Pinia. GraphQL is used to test your
+					understanding of querying structured APIs and handling responses within a Vue 3 Composition API
+					setup. TypeScript proficiency is assessed through typed components, interfaces, and type-safe
+					logic throughout the project. This exam is designed to be both challenging and practical,
+					reflecting real tasks faced by modern front-end developers.
+				</div>
+				<v-divider></v-divider>
+				<div>
+					{{ new Date().getFullYear() }} — <strong>ApolloSystems</strong>
+				</div>
+			</v-footer>
+		</client-only>
 	</v-app>
 </template>
 

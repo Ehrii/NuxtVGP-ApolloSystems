@@ -22,7 +22,8 @@
     <!-- This section displays the mission history of the rocket, including a timeline and a link to learn more about the rocket. -->
     <v-container height="900"
         class="pa-0 mt-10 bg-grey-lighten-5 rounded elevation-3 d-flex flex-column flex-md-row ga-2 ga-md-2">
-        <div class="w-100 h-100 w-h-50 w-md-50" style="height: 300px; height: 100%;">
+        <div v-if="rocketData?.rocket?.wikipedia" class="w-100 h-100 w-h-50 w-md-50"
+            style="height: 300px; height: 100%;">
             <iframe :src="rocketData?.rocket?.wikipedia" width="100%" height="100%" class="elevation-3"
                 style="border: none;"></iframe>
         </div>
@@ -43,7 +44,7 @@
     </v-container>
 
     <!-- learn more about the rocket -->
-    <div class="justify-center text-center mt-5">
+    <div v-if="rocketData?.rocket?.wikipedia" class="justify-center text-center mt-5">
         <v-chip variant="tonal" class="my-5 elevation-4" color="blue-darken-2">
             <v-icon>
                 mdi-rocket

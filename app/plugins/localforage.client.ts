@@ -7,7 +7,7 @@ import localforage from 'localforage'
 localforage.config({
   name: 'apolloSystem',
   storeName: 'pinia',
-  driver: localforage.INDEXEDDB, 
+  driver: localforage.INDEXEDDB,
 })
 
 export default localforage

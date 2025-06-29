@@ -3,7 +3,7 @@
 import { defineNuxtPlugin } from '#app'
 import { createPersistedStatePlugin } from 'pinia-plugin-persistedstate-2'
 import type { Pinia } from 'pinia'
-import localforage from './localforage'
+import localforage from '../plugins/localforage.client'
 
 // Nuxt plugin to use pinia-plugin-persistedstate-2 with localforage for state persistence
 export default defineNuxtPlugin(nuxtApp => {

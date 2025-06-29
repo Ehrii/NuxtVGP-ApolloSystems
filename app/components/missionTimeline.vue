@@ -1,5 +1,5 @@
 <template>
-     <!-- Vue component that shows timeline of mission history using Vuetify's timeline component. It displays each history item with a title, details, date, and an optional article link. -->
+    <!-- Vue component that shows timeline of mission history using Vuetify's timeline component. It displays each history item with a title, details, date, and an optional article link. -->
     <v-timeline align="start">
         <v-timeline-item v-for="(item, i) in missionHistoryData?.histories || []" :key="i" dot-color="primary"
             icon="mdi-rocket-launch" fill-dot :side="lgAndUp ? undefined : 'start'" v-bind="props">
@@ -8,12 +8,12 @@
                     {{ item.title ?? 'Unavailble' }}
                 </v-card-title>
                 <v-card-text class="bg-white text--primary pa-md-4">
-                    <medium class="text-grey-darken-2 d-block">
+                    <p class="text-grey-darken-2 d-block">
                         {{ item.details }}
-                    </medium>
-                    <medium class="text-grey d-block">
+                    </p>
+                    <p class="text-grey d-block">
                         {{ formatDate(item.event_date_utc) }}
-                    </medium>
+                    </p>
                     <div class="mt-3" v-if="item.links?.article">
                         <v-btn :href="item.links.article" target="_blank" variant="outlined" color="primary">
                             Read Article
