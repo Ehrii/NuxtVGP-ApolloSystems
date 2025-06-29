@@ -116,12 +116,9 @@
 							<template v-if="paginatedLaunches.length">
 								<v-col v-for="launch in paginatedLaunches" :key="launch.id" cols="12" md="4"
 									class="mb-4 pa-2 pa-md-10">
-									<v-hover v-slot="{ isHovering, props }">
-										<!-- The v-hover component is used to detect if the user is hovering over the card, allowing for dynamic styling or interactions based on hover state. -->
 										<MissionCard :launch="launch" :expandedCardId="expandedCardId"
-											:toggleCard="toggleCard" :isHovering="isHovering" :hoverProps="props" />
+											:toggleCard="toggleCard"  />
 										<!-- The MissionCard component is used to display individual mission details, including the mission name, launch date, and other relevant information. It also includes a button to view more details about the mission. -->
-									</v-hover>
 								</v-col>
 							</template>
 							<!-- If there are no paginated launches, a message is displayed indicating that no SpaceX missions were found. -->
