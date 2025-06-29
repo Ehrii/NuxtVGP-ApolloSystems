@@ -1,4 +1,5 @@
 <template>
+     <!-- Vue component that shows timeline of mission history using Vuetify's timeline component. It displays each history item with a title, details, date, and an optional article link. -->
     <v-timeline align="start">
         <v-timeline-item v-for="(item, i) in missionHistoryData?.histories || []" :key="i" dot-color="primary"
             icon="mdi-rocket-launch" fill-dot :side="lgAndUp ? undefined : 'start'" v-bind="props">
@@ -25,10 +26,12 @@
 </template>
 
 <script lang="ts" setup>
+// Imports history types data to display mission history
 import type { MissionHistoryData } from '~/types/rocket';
 import { useDisplay } from 'vuetify'
 const { lgAndUp } = useDisplay()
 
+// Defines props to accept mission history data
 const props = defineProps<{
     missionHistoryData: MissionHistoryData
 }>();

@@ -1,8 +1,10 @@
 <template>
+    <!-- Back button to return to the index page and a button to remove favorites -->
     <v-btn class="text-none my-5" color="#1E88E5" prepend-icon="mdi-arrow-left" size="large" variant="flat"
         :to="{ name: 'index' }">
         Go Back
     </v-btn>
+    <!-- Favorite list page where users can view and manage their saved favorite missions. It displays a list of favorite missions with options to view details or delete them from favorites. -->
     <v-card class="mx-auto">
         <v-list lines="two">
             <v-list-item-title class="ml-4 font-weight-bold text-blue-darken-2" color=""
@@ -36,7 +38,7 @@
                     </template>
                 </v-list-item>
             </template>
-
+            <!-- When there's no favorites, display a message indicating that there are no favorites saved. -->
             <template v-else>
                 <v-list-item class="text-center">
                     <v-list-item-title class="font-weight-regular text-blue-darken-2" style="font-size: 1.2rem;">No
@@ -52,10 +54,13 @@
 </template>
 
 <script setup lang="ts">
+// Import necessary modules and components
 import { useFavoritesStore } from '~/stores/addFavorites'
 const favorites = useFavoritesStore()
 const removeFromFavorites = useFavoritesStore().removeFavorite
 
+
+// Load favorites from IndexedDB when the component is mounted
 onMounted(() => {
     favorites.loadFromIndexedDB()
 })

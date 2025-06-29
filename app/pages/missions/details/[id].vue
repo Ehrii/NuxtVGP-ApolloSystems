@@ -1,4 +1,5 @@
 <template>
+    <!-- This is the details page for a specific mission, displaying rocket information and mission history. -->
     <v-container class="pb-10 mt-10 bg-grey-lighten-5 rounded elevation-3">
         <v-row align="center" justify="space-between" class="pa-4">
             <v-btn class="text-none my-5" color="#1E88E5" prepend-icon="mdi-arrow-left" size="large" variant="flat"
@@ -18,6 +19,7 @@
         </div>
     </v-container>
 
+    <!-- This section displays the mission history of the rocket, including a timeline and a link to learn more about the rocket. -->
     <v-container height="900"
         class="pa-0 mt-10 bg-grey-lighten-5 rounded elevation-3 d-flex flex-column flex-md-row ga-2 ga-md-2">
         <div class="w-100 h-100 w-h-50 w-md-50" style="height: 300px; height: 100%;">
@@ -40,6 +42,7 @@
         </div>
     </v-container>
 
+    <!-- learn more about the rocket -->
     <div class="justify-center text-center mt-5">
         <v-chip variant="tonal" class="my-5 elevation-4" color="blue-darken-2">
             <v-icon>
@@ -52,33 +55,43 @@
 
 
 <script lang="ts" setup>
-import { useAsyncQuery, gql } from '#imports'
-import type { MissionHistoryData, MissionRocket, RocketData } from '~/types/rocket'
 
+// import necessary modules and components
+import { useAsyncQuery } from '#imports'
+import type { MissionHistoryData, RocketData } from '~/types/rocket'
+import { useFavoritesStore } from '~/stores/addFavorites'
+import MissionDetails from '~/components/missionDetails.vue'
+
+const favorites = useFavoritesStore()
+// use the favorites store to manage favorite missions
 
 const route = useRoute()
+// route.params is readonly, so we need to use a type assertion
+
+
 const missionId = route.params.id as string
+// mission id is a string, so we can use it directly
+
+
 const { getLaunchById } = getRocketDetails()
+//object destructuring to get the details of the rocket by its ID
+
+
 const { getMissionHistoryById } = getMissionHistory()
+// object destructuring to get the mission history by its ID
+
 
 const { data: rocketData, error: rocketError } = await useAsyncQuery<RocketData>(getLaunchById, {
     id: missionId,
 })
+// object destructuring to get the rocket data by its ID
 
 
 const { data: missionHistoryData, error: missionHistoryDataError } = await useAsyncQuery<MissionHistoryData>(getMissionHistoryById, {
     find: { id: missionId },
 })
+// object destructuring to get the mission history data by its ID
 
-
-watchEffect(() => {
-    console.log('missionHistoryData:', missionHistoryData?.value)
-})
-
-import { useFavoritesStore } from '~/stores/addFavorites'
-import MissionDetails from '~/components/missionDetails.vue'
-
-const favorites = useFavoritesStore()
 
 const toggleFavorite = () => {
     const rocket = rocketData.value?.rocket
@@ -86,4 +99,5 @@ const toggleFavorite = () => {
         favorites.toggleFavorite(rocket)
     }
 }
+// Function to toggle the favorite status of the rocket
 </script>

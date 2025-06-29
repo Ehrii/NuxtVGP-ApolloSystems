@@ -1,4 +1,5 @@
 <template>
+    <!-- Mission card component that displays information about a SpaceX launch mission. -->
     <v-card class="mx-auto transition-all duration-300" max-width="100%" :elevation="isHovering ? 12 : 2"
         v-bind="props">
         <v-img height="200px" src="/images/bg.jpg" cover></v-img>
@@ -39,7 +40,6 @@
                 </v-col>
             </v-row>
         </v-card-actions>
-
         <v-expand-transition>
             <div v-show="expandedCardId === launch.id">
                 <v-divider></v-divider>
@@ -54,8 +54,10 @@
 
 
 <script setup lang="ts">
+// imports type launch 
 import type { Launch } from '~/types/rocket';
 
+// component define props to accept launch data, hover state, hover props, expanded card id, and toggle function
 const props = defineProps<{
     launch: Launch
     isHovering: boolean | null

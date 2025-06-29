@@ -1,3 +1,4 @@
+<!-- Vue component that displays detailed information about a rocket, including its name, description, first flight date, height, diameter, mass, and number of stages. It uses Vuetify components for styling and layout. -->
 <template>
     <div v-bind="props">
         <h1 class="text-2xl font-bold mb-6">Rocket Name: {{ rocketData?.rocket.name }}</h1>
@@ -32,7 +33,10 @@
 </template>
 
 <script lang="ts" setup>
+// imports RocketData from types/rocket
 import type { RocketData } from '~/types/rocket';
+
+// Defines props to accept rocket data
 const props = defineProps<{
     rocketData: RocketData
 }>()

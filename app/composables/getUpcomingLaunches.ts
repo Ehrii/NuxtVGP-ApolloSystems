@@ -1,5 +1,4 @@
-
-
+// Gets the upcoming launches from the SpaceX API
 export const getUpcomingLaunches = () => {
   const getLaunchesUpcoming = gql`
   query LaunchesUpcoming($limit: Int) {
@@ -17,7 +16,6 @@ export const getUpcomingLaunches = () => {
       mission_name
     }
   }`
-
   return {
     getLaunchesUpcoming,
   }

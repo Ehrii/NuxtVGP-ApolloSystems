@@ -1,20 +1,24 @@
+// Represents data that includes a single rocket object
 export interface RocketData {
-    rocket: Rocket
+    rocket: Rocket // The rocket data
 }
 
+// Represents data containing a list of mission history entries
 export interface MissionHistoryData {
-    histories: MissionRocket[]
+    histories: MissionRocket[] // Array of mission history records
 }
 
+// Represents the result of a GraphQL query that returns upcoming launches
 export interface GetLaunchesQuery {
-    launches: Launch[]
+    launches: Launch[] // Array of launch objects
 }
 
+// Represents optional variables for a query to limit the number of upcoming launches
 export interface LaunchesUpcomingVars {
-    limit?: number
+    limit?: number // Optional limit for number of launches to fetch
 }
 
-
+// Interface that represents the data structure for a mission rocket
 export interface MissionRocket {
     details: string
     event_date_utc: string
@@ -24,7 +28,7 @@ export interface MissionRocket {
     title: string
 }
 
-
+// Interface that represents the data structure for upcoming launches
 export interface LaunchesUpcomingData {
     launchesUpcoming: {
         launch_date_local: string
@@ -41,6 +45,7 @@ export interface LaunchesUpcomingData {
     }[]
 }
 
+// Interface that represents the data structure for a launch
 export interface Launch {
     id: string
     mission_name: string
@@ -55,6 +60,7 @@ export interface Launch {
     }
 }
 
+// Interface that represents the data structure for a rocket
 export interface Rocket {
     id: string
     name: string

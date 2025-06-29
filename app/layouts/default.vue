@@ -1,11 +1,12 @@
 <template>
 	<v-app>
 		<v-layout>
-			<!-- App Bar -->
+			<!-- App Bar with Slide Transition -->
 			<v-slide-y-transition>
 				<v-app-bar v-if="showAppBar" color="primary" dark app>
 					<v-app-bar-nav-icon @click="drawer = !drawer" />
 					<v-app-bar-title>
+						<!-- Customized title based on the current route name. -->
 						<v-icon left> {{
 							route.name === 'index'
 								? 'mdi-rocket-launch'
@@ -39,10 +40,9 @@
 				</v-list>
 			</v-navigation-drawer>
 
-			<!-- Main content -->
+			<!-- Main content area to display the main content of the application. -->
 			<template>
 				<v-main class="position-relative overflow-hidden" style="min-height: 100vh;">
-					<!-- Radial Gradient Background -->
 					<v-sheet class="position-absolute " style="
 						inset: 0;
 						z-index: -10;
@@ -55,12 +55,12 @@
 						background-size: 4rem 4rem;
 					"></v-sheet>
 
-					<!-- Page Content -->
 					<v-container fluid class="pa-4">
 						<slot />
 					</v-container>
 				</v-main>
 
+				<!-- Added footer to the layout to provide additional information and links. -->
 				<v-footer class="text-center d-flex flex-column ga-2 py-4" color="blue-darken-3">
 					<div class="d-flex ga-3">
 						<v-btn v-for="icon in icons" :key="icon" :icon="icon" density="comfortable"
@@ -90,18 +90,22 @@
 </template>
 
 <script setup>
+// Import necessary modules and components
 import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 
+// Define reactive variables for the drawer state and route
 const drawer = ref(false)
 const route = useRoute()
 const showAppBar = ref(false)
 
+// Define icons for the footer
 const icons = [
 	'mdi-github',
 	'mdi-linkedin',
 ];
 
+// Function to toggle the drawer state
 onMounted(() => {
 	setTimeout(() => {
 		showAppBar.value = true

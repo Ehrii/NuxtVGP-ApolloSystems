@@ -1,7 +1,9 @@
-// composables/useLaunchFilter.ts
+// imports ref, types for launches
 import { ref } from 'vue'
 import type { GetLaunchesQuery, Launch } from '~/types/rocket'
 
+
+// composable function to fetch launches from the SpaceX API
 const getLaunches = gql(`
   query GetLaunches {
     launches(sort: "launch_date_utc", order: "desc") {
@@ -20,8 +22,7 @@ const getLaunches = gql(`
   }
 `)
 
-
-
+// composable function with Launch type to filter and sort launches based on year, search query, and sort order
 export const useLaunchFilter = () => {
   const selectedYear = ref<string | null>(null)
   const sortOrder = ref<'asc' | 'desc'>('asc')

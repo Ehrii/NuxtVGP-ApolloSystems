@@ -1,3 +1,4 @@
+// composable functions to fetch rocket details, mission details, and mission history using GraphQL queries
 export const getRocketDetails = () => {
     const getLaunchById = gql`
     query GetRocket($id: ID!) {
@@ -57,6 +58,7 @@ export const getMissionHistory = () => {
     }
 }
 
+// composable function to format date strings into a more readable format
 
 export const formatDate = (dateStr: string): string => {
     const options: Intl.DateTimeFormatOptions = {

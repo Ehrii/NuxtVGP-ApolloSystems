@@ -2,6 +2,15 @@ import vuetify from 'vite-plugin-vuetify'
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
 export default defineNuxtConfig({
+	app: {
+		head: {
+			title: 'SpaceX Launches',
+			htmlAttrs: { lang: 'en' },
+			link: [
+				{ rel: 'icon', type: 'image/png', href: '/images/favicon/spacexlogo.png' },
+			]
+		}
+	},
 	future: { compatibilityVersion: 4 },
 	build: { transpile: ['vuetify'] },
 	imports: { dirs: ['./stores'] },
